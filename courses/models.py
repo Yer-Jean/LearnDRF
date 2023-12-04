@@ -29,3 +29,16 @@ class Lesson(models.Model):
     class Meta:
         verbose_name = 'Lesson'
         verbose_name_plural = 'Lessons'
+
+
+class Payments(models.Model):
+    PAYMENT_TYPE_CHOICES = (
+        ('cash', 'Paid in cash'),
+        ('card', 'Paid by card')
+    )
+    student = models.CharField(max_length=150, verbose_name='Student')
+    date = models.DateField(verbose_name='Date of payment')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Course', **NULLABLE)
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, verbose_name='Lesson', **NULLABLE)
+    amount = models.PositiveIntegerField(verbose_name='Amount')
+    payment_type = models.CharField(choices=PAYMENT_TYPE_CHOICES, verbose_name="Payment Type")
