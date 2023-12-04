@@ -1,0 +1,102 @@
+[
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Luke Skywalker",
+      "payment_date": "2023-07-18",
+      "course": 1,
+      "amount": 99,
+      "payment_type": "card"
+    }
+  },
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Han Solo",
+      "payment_date": "2023-07-25",
+      "course": 1,
+      "amount": 99,
+      "payment_type": "cash"
+    }
+  },
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Yoda",
+      "payment_date": "2023-09-25",
+      "lesson": 1,
+      "amount": 19,
+      "payment_type": "card"
+    }
+  },
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Yoda",
+      "payment_date": "2023-10-25",
+      "lesson": 2,
+      "amount": 39,
+      "payment_type": "card"
+    }
+  },
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Yoda",
+      "payment_date": "2023-11-25",
+      "lesson": 3,
+      "amount": 29,
+      "payment_type": "card"
+    }
+  },
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Princess Leia",
+      "payment_date": "2023-07-18",
+      "lesson": 3,
+      "amount": 29,
+      "payment_type": "cash"
+    }
+  },
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Darth Vader",
+      "payment_date": "2023-11-30",
+      "lesson": 3,
+      "amount": 29,
+      "payment_type": "card"
+    }
+  },
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Obi-Wan Kenobi",
+      "payment_date": "2023-07-18",
+      "course": 2,
+      "amount": 299,
+      "payment_type": "cash"
+    }
+  },
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Chewbacca",
+      "payment_date": "2023-10-25",
+      "lesson": 1,
+      "amount": 19,
+      "payment_type": "cash"
+    }
+  },
+  {
+    "model": "courses.payment",
+    "fields": {
+      "student": "Chewbacca",
+      "payment_date": "2023-10-25",
+      "course": 2,
+      "amount": 129,
+      "payment_type": "cash"
+    }
+  }
+]
