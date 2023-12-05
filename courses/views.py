@@ -6,6 +6,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from courses.models import Course, Lesson, Payment
 from courses.serializers import CourseSerializer, LessonSerializer, PaymentSerializer, StudentPaymentHistorySerializer
+from users.models import User
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -52,7 +53,8 @@ class StudentPaymentHistoryView(APIView):
         for student in students:
             payments = Payment.objects.filter(student=student)
             serialized_data = StudentPaymentHistorySerializer({
-                'student': student,
+                'student': User.objects.get(pk=student).email,
+                # 'student': student,
                 'payments': payments
             }).data
             payment_history.append(serialized_data)
