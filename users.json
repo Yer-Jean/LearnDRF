@@ -1,0 +1,162 @@
+[
+  {
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+      "password": "123qwe456rty",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "Yerg",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-11-29T17:30:22.790Z",
+      "email": "yerg@mail.ru",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+      "password": "Chewbacca",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-05T14:53:41.708Z",
+      "email": "Chewbacca@mail.com",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+      "password": "OWKenobi",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-05T14:54:35.469Z",
+      "email": "OWKenobi@mail.com",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+      "password": "DVader",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-05T14:55:29.907Z",
+      "email": "DVader@mail.com",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 5,
+    "fields": {
+      "password": "Leia",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-05T14:55:51.970Z",
+      "email": "Leia@mail.com",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 6,
+    "fields": {
+      "password": "Yoda",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-05T14:56:16.884Z",
+      "email": "Yoda@mail.com",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 7,
+    "fields": {
+      "password": "HanSolo",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-05T14:56:55.466Z",
+      "email": "HanSolo@mail.com",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": 8,
+    "fields": {
+      "password": "Skywalker",
+      "last_login": null,
+      "is_superuser": false,
+      "first_name": "",
+      "last_name": "",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2023-12-05T14:57:13.134Z",
+      "email": "Skywalker@mail.com",
+      "phone": null,
+      "city": null,
+      "avatar": "",
+      "groups": [],
+      "user_permissions": []
+    }
+  }
+]

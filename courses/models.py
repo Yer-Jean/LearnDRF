@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 
 NULLABLE = {'blank': True, 'null': True}
@@ -34,9 +35,10 @@ class Lesson(models.Model):
 class Payment(models.Model):
     PAYMENT_TYPE_CHOICES = (
         ('cash', 'Paid in cash'),
-        ('card', 'Paid by card')
+        ('bank', 'Bank Transfer')
     )
-    student = models.CharField(max_length=150, verbose_name='Student')
+    student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
+                                **NULLABLE, verbose_name='Student')
     payment_date = models.DateField(verbose_name='Date of payment')
     course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Course', **NULLABLE)
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, verbose_name='Lesson', **NULLABLE)
