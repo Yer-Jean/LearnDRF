@@ -19,7 +19,7 @@ class CourseSerializer(serializers.ModelSerializer):
     # lessons_count = serializers.IntegerField(source='lesson_set.all.count', read_only=True)
     # но из-за указания related_name='lessons' в модели Lesson сделаем так:
     lessons_count = serializers.IntegerField(source='lessons.all.count', read_only=True)
-    lessons = LessonSerializer(many=True)
+    lessons = LessonSerializer(many=True, read_only=True)
 
     class Meta:
         model = Course

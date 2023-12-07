@@ -8,72 +8,72 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         payment_list = [
             {
-                "student": 8,
+                "student_id": 8,
                 "payment_date": "2023-07-18",
-                "course": 1,
+                "course_id": 1,
                 "amount": 99,
                 "payment_type": "bank"
             },
             {
-                "student": 7,
+                "student_id": 7,
                 "payment_date": "2023-07-25",
-                "course": 1,
+                "course_id": 1,
                 "amount": 99,
                 "payment_type": "cash"
             },
             {
-                "student": 6,
+                "student_id": 6,
                 "payment_date": "2023-09-25",
-                "lesson": 1,
+                "lesson_id": 1,
                 "amount": 19,
                 "payment_type": "bank"
             },
             {
-                "student": 6,
+                "student_id": 6,
                 "payment_date": "2023-10-25",
-                "lesson": 2,
+                "lesson_id": 2,
                 "amount": 39,
                 "payment_type": "bank"
             },
             {
-                "student": 6,
+                "student_id": 6,
                 "payment_date": "2023-11-25",
-                "lesson": 3,
+                "lesson_id": 3,
                 "amount": 29,
                 "payment_type": "bank"
             },
             {
-                "student": 5,
+                "student_id": 5,
                 "payment_date": "2023-07-18",
-                "lesson": 3,
+                "lesson_id": 3,
                 "amount": 29,
                 "payment_type": "cash"
             },
             {
-                "student": 4,
+                "student_id": 4,
                 "payment_date": "2023-11-30",
-                "lesson": 3,
+                "lesson_id": 3,
                 "amount": 29,
                 "payment_type": "bank"
             },
             {
-                "student": 3,
+                "student_id": 3,
                 "payment_date": "2023-07-18",
-                "course": 2,
+                "course_id": 2,
                 "amount": 299,
                 "payment_type": "cash"
             },
             {
-                "student": 2,
+                "student_id": 2,
                 "payment_date": "2023-10-25",
-                "lesson": 1,
+                "lesson_id": 1,
                 "amount": 19,
                 "payment_type": "cash"
             },
             {
-                "student": 2,
+                "student_id": 2,
                 "payment_date": "2023-10-25",
-                "course": 2,
+                "course_id": 2,
                 "amount": 129,
                 "payment_type": "cash"
             }
