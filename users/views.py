@@ -10,7 +10,7 @@ class UserCreateAPIView(generics.CreateAPIView):
 
 
 class UserListAPIView(generics.ListAPIView):
-    serializer_class = UserSerializer
+    serializer_class = RestrictedUserSerializer
     queryset = User.objects.all()
 
 
