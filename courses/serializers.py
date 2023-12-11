@@ -2,6 +2,7 @@ from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 
 from courses.models import Course, Lesson, Payment
+from courses.validators import VideoURLValidator
 
 
 class LessonSerializer(serializers.ModelSerializer):
@@ -10,7 +11,8 @@ class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = '__all__'  # ('title', 'description',)`
+        fields = '__all__'
+        validators = [VideoURLValidator(field='video_url')]
 
 
 class CourseSerializer(serializers.ModelSerializer):
