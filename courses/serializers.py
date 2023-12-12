@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from rest_framework.relations import SlugRelatedField
 
-from courses.models import Course, Lesson, Payment
+from courses.models import Course, Lesson, Payment, Subscription
+from courses.validators import VideoURLValidator
 
 
 class LessonSerializer(serializers.ModelSerializer):
@@ -10,7 +11,8 @@ class LessonSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Lesson
-        fields = '__all__'  # ('title', 'description',)`
+        fields = '__all__'
+        validators = [VideoURLValidator(field='video_url'),]
 
 
 class CourseSerializer(serializers.ModelSerializer):
@@ -20,10 +22,18 @@ class CourseSerializer(serializers.ModelSerializer):
     # но из-за указания related_name='lessons' в модели Lesson сделаем так:
     lessons_count = serializers.IntegerField(source='lessons.all.count', read_only=True)
     lessons = LessonSerializer(many=True, read_only=True)
+    is_subscribed = serializers.SerializerMethodField()
 
     class Meta:
         model = Course
         fields = '__all__'  # ('title', 'description',)
+
+    def get_is_subscribed(self, obj):
+        # Получаем текущего пользователя из запроса
+        user = self.context['request'].user if 'request' in self.context else None
+
+        # Проверяем, подписан ли пользователь на данный курс
+        return user and Subscription.objects.filter(user=user, course=obj).exists()
 
 
 class PaymentSerializer(serializers.ModelSerializer):
@@ -50,3 +60,10 @@ class StudentPaymentHistorySerializer(serializers.Serializer):
             'student': instance['student'],
             'payments': PaymentHistorySerializer(instance['payments'], many=True).data
         }
+
+
+class SubscriptionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Subscription
+        fields = '__all__'

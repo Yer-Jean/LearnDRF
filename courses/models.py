@@ -46,3 +46,15 @@ class Payment(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, verbose_name='Lesson', **NULLABLE)
     amount = models.PositiveIntegerField(verbose_name='Amount')
     payment_type = models.CharField(choices=PAYMENT_TYPE_CHOICES, verbose_name="Payment Type")
+
+
+class Subscription(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, verbose_name='Student')
+    course = models.ForeignKey(Course, on_delete=models.CASCADE, verbose_name='Course')
+
+    def __str__(self):
+        return f'{self.user} - {self.course}'
+
+    class Meta:
+        verbose_name = 'Subscription'
+        verbose_name_plural = 'Subscriptions'
