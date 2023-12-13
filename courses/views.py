@@ -155,7 +155,7 @@ class SubscriptionCreateAPIView(generics.CreateAPIView):
         serializer = self.get_serializer(data={'user': request.user.pk, 'course': course_pk})
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
-        return Response({'Вы подписались на курс.'}, status=status.HTTP_201_CREATED)
+        return Response({'You have subscribed for the course'}, status=status.HTTP_201_CREATED)
 
 
 class SubscriptionDeleteAPIView(generics.DestroyAPIView):
@@ -173,4 +173,4 @@ class SubscriptionDeleteAPIView(generics.DestroyAPIView):
         instance = self.get_object()
         instance.delete()
 
-        return Response({'Вы отписались от курса.'}, status=status.HTTP_204_NO_CONTENT)
+        return Response({'You have unsubscribed for the course'}, status=status.HTTP_204_NO_CONTENT)
