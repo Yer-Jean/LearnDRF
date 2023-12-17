@@ -50,7 +50,7 @@ class PaymentHistorySerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Payment
-        fields = ('payment_date', 'amount', 'payment_type', 'course', 'lesson')
+        fields = ('payment_date', 'amount', 'payment_type', 'is_paid', 'course', 'lesson')
 
 
 class StudentPaymentHistorySerializer(serializers.Serializer):

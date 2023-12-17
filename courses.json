@@ -1,1 +1,388 @@
-[{"model": "courses.course", "pk": 1, "fields": {"title": "Django 4", "preview": "", "description": "", "owner": 5}}, {"model": "courses.course", "pk": 2, "fields": {"title": "Python 3", "preview": "", "description": null, "owner": null}}, {"model": "courses.course", "pk": 9, "fields": {"title": "Java", "preview": "", "description": null, "owner": 7}}, {"model": "courses.lesson", "pk": 1, "fields": {"title": "#1. Первое знакомство с Python Установка на компьютер", "preview": "", "description": null, "video_url": null, "course": 2, "owner": null}}, {"model": "courses.lesson", "pk": 2, "fields": {"title": "#2. Варианты исполнения команд. Переходим в PyCharm", "preview": "", "description": null, "video_url": null, "course": 2, "owner": null}}, {"model": "courses.lesson", "pk": 3, "fields": {"title": "#3. Переменные, оператор присваивания, функции type и id", "preview": "", "description": null, "video_url": null, "course": 2, "owner": null}}, {"model": "courses.lesson", "pk": 4, "fields": {"title": "#1. Django, что это такое? Инструментальные средства", "preview": "", "description": "", "video_url": null, "course": 1, "owner": 5}}, {"model": "courses.lesson", "pk": 5, "fields": {"title": "#2. Установка Django. Создание проекта", "preview": "", "description": "", "video_url": null, "course": 1, "owner": 5}}, {"model": "courses.payment", "pk": 1, "fields": {"student": 8, "payment_date": "2023-07-18", "course": 1, "lesson": null, "amount": 99, "payment_type": "bank"}}, {"model": "courses.payment", "pk": 2, "fields": {"student": 7, "payment_date": "2023-07-25", "course": 1, "lesson": null, "amount": 99, "payment_type": "cash"}}, {"model": "courses.payment", "pk": 3, "fields": {"student": 6, "payment_date": "2023-09-25", "course": null, "lesson": 1, "amount": 19, "payment_type": "bank"}}, {"model": "courses.payment", "pk": 4, "fields": {"student": 6, "payment_date": "2023-10-25", "course": null, "lesson": 2, "amount": 39, "payment_type": "bank"}}, {"model": "courses.payment", "pk": 5, "fields": {"student": 6, "payment_date": "2023-11-25", "course": null, "lesson": 3, "amount": 29, "payment_type": "bank"}}, {"model": "courses.payment", "pk": 6, "fields": {"student": 5, "payment_date": "2023-07-18", "course": null, "lesson": 3, "amount": 29, "payment_type": "cash"}}, {"model": "courses.payment", "pk": 7, "fields": {"student": 4, "payment_date": "2023-11-30", "course": null, "lesson": 3, "amount": 29, "payment_type": "bank"}}, {"model": "courses.payment", "pk": 8, "fields": {"student": 3, "payment_date": "2023-07-18", "course": 2, "lesson": null, "amount": 299, "payment_type": "cash"}}, {"model": "courses.payment", "pk": 9, "fields": {"student": 2, "payment_date": "2023-10-25", "course": null, "lesson": 1, "amount": 19, "payment_type": "cash"}}, {"model": "courses.payment", "pk": 10, "fields": {"student": 2, "payment_date": "2023-10-25", "course": 2, "lesson": null, "amount": 129, "payment_type": "cash"}}]
+[
+  {
+    "model": "courses.course",
+    "pk": 1,
+    "fields": {
+      "title": "Django 4",
+      "preview": "",
+      "description": "",
+      "owner": 5
+    }
+  },
+  {
+    "model": "courses.course",
+    "pk": 2,
+    "fields": {
+      "title": "Python 3",
+      "preview": "",
+      "description": "Python 3.11",
+      "owner": 6
+    }
+  },
+  {
+    "model": "courses.course",
+    "pk": 9,
+    "fields": {
+      "title": "Java",
+      "preview": "",
+      "description": null,
+      "owner": 7
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 1,
+    "fields": {
+      "title": "#1. Первое знакомство с Python Установка на компьютер",
+      "preview": "",
+      "description": null,
+      "video_url": null,
+      "course": 2,
+      "owner": null
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 2,
+    "fields": {
+      "title": "#2. Варианты исполнения команд. Переходим в PyCharm",
+      "preview": "",
+      "description": null,
+      "video_url": null,
+      "course": 2,
+      "owner": null
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 3,
+    "fields": {
+      "title": "#3. Переменные, оператор присваивания, функции type и id",
+      "preview": "",
+      "description": null,
+      "video_url": null,
+      "course": 2,
+      "owner": null
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 4,
+    "fields": {
+      "title": "#1. Django, что это такое? Инструментальные средства",
+      "preview": "",
+      "description": "",
+      "video_url": null,
+      "course": 1,
+      "owner": 5
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 5,
+    "fields": {
+      "title": "#2. Установка Django. Создание проекта",
+      "preview": "",
+      "description": "",
+      "video_url": null,
+      "course": 1,
+      "owner": 5
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 13,
+    "fields": {
+      "title": "Lesson 9",
+      "preview": "",
+      "description": null,
+      "video_url": "http://www.youtube.ru/1",
+      "course": 9,
+      "owner": 7
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 14,
+    "fields": {
+      "title": "Lesson 11",
+      "preview": "",
+      "description": null,
+      "video_url": "http://www.youtu.be/1153",
+      "course": 9,
+      "owner": 7
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 15,
+    "fields": {
+      "title": "#4. Числовые типы, арифметические операции",
+      "preview": "",
+      "description": null,
+      "video_url": null,
+      "course": 2,
+      "owner": 5
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 16,
+    "fields": {
+      "title": "#5. Математические функции и работа с модулем math",
+      "preview": "",
+      "description": null,
+      "video_url": null,
+      "course": 2,
+      "owner": 5
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 17,
+    "fields": {
+      "title": "#6. Функции print() и input(). Преобразование строк в числа int() и float()",
+      "preview": "",
+      "description": null,
+      "video_url": null,
+      "course": 2,
+      "owner": 5
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 18,
+    "fields": {
+      "title": "#7. Логический тип bool. Операторы сравнения и операторы and, or, not",
+      "preview": "",
+      "description": null,
+      "video_url": null,
+      "course": 2,
+      "owner": 5
+    }
+  },
+  {
+    "model": "courses.lesson",
+    "pk": 19,
+    "fields": {
+      "title": "#8. Введение в строки. Базовые операции над строками",
+      "preview": "",
+      "description": null,
+      "video_url": null,
+      "course": 2,
+      "owner": 5
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 1,
+    "fields": {
+      "student": 8,
+      "payment_date": "2023-07-18",
+      "course": 1,
+      "lesson": null,
+      "amount": 99,
+      "payment_type": "bank",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 2,
+    "fields": {
+      "student": 7,
+      "payment_date": "2023-07-25",
+      "course": 1,
+      "lesson": null,
+      "amount": 99,
+      "payment_type": "cash",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 3,
+    "fields": {
+      "student": 6,
+      "payment_date": "2023-09-25",
+      "course": null,
+      "lesson": 1,
+      "amount": 19,
+      "payment_type": "bank",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 4,
+    "fields": {
+      "student": 6,
+      "payment_date": "2023-10-25",
+      "course": null,
+      "lesson": 2,
+      "amount": 39,
+      "payment_type": "bank",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 5,
+    "fields": {
+      "student": 6,
+      "payment_date": "2023-11-25",
+      "course": null,
+      "lesson": 3,
+      "amount": 29,
+      "payment_type": "bank",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 6,
+    "fields": {
+      "student": 5,
+      "payment_date": "2023-07-18",
+      "course": null,
+      "lesson": 3,
+      "amount": 29,
+      "payment_type": "cash",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 7,
+    "fields": {
+      "student": 4,
+      "payment_date": "2023-11-30",
+      "course": null,
+      "lesson": 3,
+      "amount": 29,
+      "payment_type": "bank",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 8,
+    "fields": {
+      "student": 3,
+      "payment_date": "2023-07-18",
+      "course": 2,
+      "lesson": null,
+      "amount": 299,
+      "payment_type": "cash",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 9,
+    "fields": {
+      "student": 2,
+      "payment_date": "2023-10-25",
+      "course": null,
+      "lesson": 1,
+      "amount": 19,
+      "payment_type": "cash",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 10,
+    "fields": {
+      "student": 2,
+      "payment_date": "2023-10-25",
+      "course": 2,
+      "lesson": null,
+      "amount": 129,
+      "payment_type": "card",
+      "payment_reference": "cs_test_a1glI6qVXO3HesVLLc0GpYBHDFd7g4E3uEMXK34RcItoPQztWc0874jBDk",
+      "is_paid": true
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 31,
+    "fields": {
+      "student": 5,
+      "payment_date": "2023-12-06",
+      "course": 2,
+      "lesson": null,
+      "amount": 299,
+      "payment_type": "card",
+      "payment_reference": null,
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 32,
+    "fields": {
+      "student": 5,
+      "payment_date": "2023-12-06",
+      "course": 2,
+      "lesson": null,
+      "amount": 299,
+      "payment_type": "card",
+      "payment_reference": "cs_test_a1LMzebz7tlygBUgOzVVX6BEqyLEDtytvIWc16pBLo4fcNcnNVk0XzOVkU",
+      "is_paid": false
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 33,
+    "fields": {
+      "student": 5,
+      "payment_date": "2023-12-06",
+      "course": 2,
+      "lesson": null,
+      "amount": 299,
+      "payment_type": "card",
+      "payment_reference": "cs_test_a1v88LjMpBUurV7NfjyPbj8ahG9um8sYzDOapx4Gg2Po443Lzt4m5exBE4",
+      "is_paid": true
+    }
+  },
+  {
+    "model": "courses.payment",
+    "pk": 34,
+    "fields": {
+      "student": 5,
+      "payment_date": "2023-12-06",
+      "course": 2,
+      "lesson": null,
+      "amount": 299,
+      "payment_type": "card",
+      "payment_reference": "cs_test_a1GTqRL92ualsNhm2RM0COD61CJP9I4VdcCQDTLI0jMYI8kOcAQNoDzQXm",
+      "is_paid": true
+    }
+  },
+  {
+    "model": "courses.subscription",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "course": 2
+    }
+  },
+  {
+    "model": "courses.subscription",
+    "pk": 2,
+    "fields": {
+      "user": 6,
+      "course": 2
+    }
+  }
+]
