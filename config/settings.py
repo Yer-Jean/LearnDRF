@@ -156,11 +156,16 @@ SIMPLE_JWT = {
 
 SWAGGER_SETTINGS = {
     'SECURITY_DEFINITIONS': {
-        'api_key': {
+        'Bearer': {
             'type': 'apiKey',
             'in': 'header',
             'name': 'Authorization'
         }
+        # 'api_key': {
+        #     'type': 'apiKey',
+        #     'in': 'header',
+        #     'name': 'Authorization'
+        # }
     },
 }
 
@@ -169,3 +174,6 @@ EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == '1'
+
+STRIPE_SECRET_KEY = os.getenv('STIPE_SECRET_KEY')
+STRIPE_API_URL = os.getenv('STIPE_API_URL')

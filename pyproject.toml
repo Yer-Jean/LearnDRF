@@ -16,6 +16,7 @@ django-filter = "^23.4"
 djangorestframework-simplejwt = "^5.3.1"
 coverage = "^7.3.2"
 drf-yasg = "^1.21.7"
+requests = "^2.31.0"
 
 
 [build-system]

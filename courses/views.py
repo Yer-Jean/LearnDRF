@@ -1,3 +1,4 @@
+import requests
 from rest_framework import viewsets, generics, status
 from rest_framework.filters import OrderingFilter
 from rest_framework.generics import get_object_or_404
@@ -6,6 +7,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 
+from django.conf import settings
 from courses.paginators import CourseAndLessonPaginator
 from courses.permissions import IsNotModerator, IsOwner
 from courses.serializers import *
@@ -119,6 +121,82 @@ class LessonUpdateAPIView(generics.UpdateAPIView):
 class LessonDestroyAPIView(generics.DestroyAPIView):
     queryset = Lesson.objects.all()
     permission_classes = [IsAuthenticated, IsNotModerator, IsOwner]
+
+
+class PaymentByCardCreateAPIView(generics.CreateAPIView):
+    serializer_class = PaymentSerializer
+    permission_classes = [IsAuthenticated, IsNotModerator]
+
+    def perform_create(self, serializer):
+        payment = serializer.save()
+        payment.student = self.request.user
+
+        session_id = self.create_stripe_payment(payment)
+        payment.payment_reference = session_id
+
+        payment.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+    def create_stripe_payment(self, payment):
+        """ Метод создает платеж, с поледовательным созданием продукта,
+        цены на него и сессии для платежа по кредитной карте"""
+        # Создаем продукт с наименованием из созданного платежа
+        url = settings.STRIPE_API_URL + 'products'
+        data = {
+            'name': payment.course if payment.course else payment.lesson,
+        }
+        response = requests.post(url, auth=(settings.STRIPE_SECRET_KEY, ''), data=data)
+
+        # Создаем цену на созданный продукт
+        url = settings.STRIPE_API_URL + 'prices'
+        data = {
+            'currency': 'usd',
+            'unit_amount': payment.amount,
+            'recurring[interval]': None,
+            'product_data[name]': payment.course if payment.course else payment.lesson,
+        }
+        response = requests.post(url, auth=(settings.STRIPE_SECRET_KEY, ''), data=data)
+
+        price_id = response.json().get('id')
+
+        # Создаем сессию на сервисе stripe.com
+        url = settings.STRIPE_API_URL + 'checkout/sessions'
+        success_url = 'https://example.com/success'
+        quantity = 1
+        data = {
+            'success_url': success_url,
+            'line_items[0][price]': price_id,
+            'line_items[0][quantity]': quantity,
+            'mode': 'payment',
+        }
+        response = requests.post(url, auth=(settings.STRIPE_SECRET_KEY, ''), data=data)
+        # print(response.json())
+        return response.json().get('id')
+
+
+class PaymentByCardGetAPIView(APIView):
+
+    def get(self, request):
+        """ Метод возвращает платежи, которые были оплачены """
+        paid_payments = []
+
+        # Запрашиваем все платежные сессии со stripe.com
+        url = settings.STRIPE_API_URL + 'checkout/sessions'
+        response = requests.get(url, auth=(settings.STRIPE_SECRET_KEY, ''), data=data)
+        payments = response.json()['data']
+        # Если сессия оплачена, то меняем статус is_paid в модели Payments
+        for payment in payments:
+            if payment['payment_status'] in ['paid', 'completed']:
+                pay = Payment.objects.get(payment_reference=payment['id'])
+                # Если ранее эта сессия была не оплачена, то меняем статус на is_paid=True
+                if not pay.is_paid:
+                    pay.is_paid = True
+                    pay.save()
+                    # Собираем свежеоплаченные сессии используя сериалайзер для последующего вывода
+                    serialized_data = PaymentHistorySerializer(pay).data
+                    paid_payments.append(serialized_data)
+        # Возвращаем для вывода те платежи, которые были оплачены с последнего запуска этого метода
+        return Response(paid_payments)
 
 
 class PaymentListAPIView(generics.ListAPIView):

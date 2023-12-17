@@ -19,6 +19,10 @@ urlpatterns = [
     path('payment/', PaymentListAPIView.as_view(), name='payment_list'),
     path('payment_history/', StudentPaymentHistoryView.as_view(), name='student_payment_history'),
 
+    path('payment/create_by_card/', PaymentByCardCreateAPIView.as_view(), name='payment_by_card_create'),
+    path('payment/get_by_card/', PaymentByCardGetAPIView.as_view(), name='payment_by_card_get'),
+    # path('payment/<str:session_id>/', PaymentByCardGetAPIView.as_view(), name='payment_by_card_get'),
+
     path('subscribe/<int:course_pk>/', SubscriptionCreateAPIView.as_view(), name='course_subscribe'),
     path('unsubscribe/<int:course_pk>/', SubscriptionDeleteAPIView.as_view(), name='course_unsubscribe'),
 ] + router.urls

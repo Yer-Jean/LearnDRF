@@ -37,7 +37,8 @@ class Lesson(models.Model):
 class Payment(models.Model):
     PAYMENT_TYPE_CHOICES = (
         ('cash', 'Paid in cash'),
-        ('bank', 'Bank Transfer')
+        ('bank', 'Bank Transfer'),
+        ('card', 'Paid by card')
     )
     student = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL,
                                 **NULLABLE, verbose_name='Student')
@@ -46,6 +47,8 @@ class Payment(models.Model):
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE, verbose_name='Lesson', **NULLABLE)
     amount = models.PositiveIntegerField(verbose_name='Amount')
     payment_type = models.CharField(choices=PAYMENT_TYPE_CHOICES, verbose_name="Payment Type")
+    payment_reference = models.CharField(max_length=150, verbose_name="Payment Reference", **NULLABLE)
+    is_paid = models.BooleanField(default=False, verbose_name='Paid')
 
 
 class Subscription(models.Model):
