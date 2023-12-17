@@ -182,7 +182,7 @@ class PaymentByCardGetAPIView(APIView):
 
         # Запрашиваем все платежные сессии со stripe.com
         url = settings.STRIPE_API_URL + 'checkout/sessions'
-        response = requests.get(url, auth=(settings.STRIPE_SECRET_KEY, ''), data=data)
+        response = requests.get(url, auth=(settings.STRIPE_SECRET_KEY, ''))
         payments = response.json()['data']
         # Если сессия оплачена, то меняем статус is_paid в модели Payments
         for payment in payments:
