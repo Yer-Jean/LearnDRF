@@ -11,8 +11,9 @@ from django.conf import settings
 from courses.paginators import CourseAndLessonPaginator
 from courses.permissions import IsNotModerator, IsOwner
 from courses.serializers import *
-from courses.services import send_course_update_notification
+from courses.tasks import send_course_update_notification
 from users.models import User
+from users.tasks import disabling_users
 
 
 class CourseViewSet(viewsets.ModelViewSet):
@@ -40,12 +41,11 @@ class CourseViewSet(viewsets.ModelViewSet):
 
     def perform_update(self, serializer):
         instance = serializer.save()
-
-        # Получаем всех подписчиков курса
-        subscribers = Subscription.objects.filter(course=instance).values_list('user__email', flat=True)
+        # Получаем всех подписчиков курса (преобразуем QuerySet в список - иначе не работает celery.delay)
+        subscribers = list(Subscription.objects.filter(course=instance.pk).values_list('user__email', flat=True))
         # Отправляем письмо
-        send_course_update_notification(subscribers,
-                                        f'The course "{instance.title}" has been updated')
+        send_course_update_notification.delay(subscribers,
+                                              f'The course "{instance.title}" has been updated')
 
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
@@ -70,11 +70,11 @@ class LessonCreateAPIView(generics.CreateAPIView):
         lesson = serializer.save()
         lesson.owner = self.request.user
         lesson.save()
-        # Получаем всех подписчиков курса
-        subscribers = Subscription.objects.filter(course=lesson.course).values_list('user__email', flat=True)
+        # Получаем всех подписчиков курса (преобразуем QuerySet в список - иначе не работает celery.delay)
+        subscribers = list(Subscription.objects.filter(course=lesson.course).values_list('user__email', flat=True))
         # Отправляем письмо
-        send_course_update_notification(subscribers,
-                                        f'New lesson have been released on course "{lesson.course}"')
+        send_course_update_notification.delay(subscribers,
+                                              f'New lesson have been released on course "{lesson.course}"')
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 
@@ -110,11 +110,12 @@ class LessonUpdateAPIView(generics.UpdateAPIView):
 
     def perform_update(self, serializer):
         instance = serializer.save()
-        # Получаем всех подписчиков курса
-        subscribers = Subscription.objects.filter(course=instance.course).values_list('user__email', flat=True)
+        # Получаем всех подписчиков курса (преобразуем QuerySet в список - иначе не работает celery.delay)
+        subscribers = list(Subscription.objects.filter(course=instance.course).values_list('user__email', flat=True))
         # Отправляем письмо
-        send_course_update_notification(subscribers, f'Lesson "{instance.title}"'
-                                        f' has been updated on course "{instance.course}"')
+        send_course_update_notification.delay(subscribers,
+                                              f'Lesson "{instance.title}"'
+                                              f' has been updated on course "{instance.course}"')
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
 
